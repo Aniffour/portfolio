@@ -23,19 +23,25 @@
     width: 1170px !important;
   }
 }
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 header {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #505763;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
 }
-header .logo {
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+header .container .logo {
+  text-decoration: none;
+  color: #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,50 +50,51 @@ header .logo {
   border-radius: 50%;
   overflow: hidden;
 }
-header .logo img {
+header .container .logo img {
   width: inherit;
   height: inherit;
   border-radius: inherit;
 }
-header .logo img:hover {
+header .container .logo img:hover {
   transition: 0.5;
   opacity: 0.7;
   transform: scale(1.2) rotate(-10deg);
 }
 @media (min-width: 768px) {
-  header i {
+  header .container i {
     display: none;
   }
-  header ul {
+  header .container ul {
     display: flex;
   }
 }
 @media (max-width: 768px) {
-  header ul {
+  header .container ul {
     display: none;
     position: absolute;
     background-color: #505763;
     top: 20px;
     flex-direction: column;
   }
-  header i {
+  header .container i {
     display: inline-block;
   }
-  header .content {
+  header .container .content {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
   }
 }
-header ul {
+header .container ul {
   list-style: none;
   padding: 0;
   margin: 0;
   justify-content: space-between;
   align-items: center;
+  z-index: 100000;
 }
-header ul li {
+header .container ul li {
   transition: 0.5;
   padding: 5px 10px;
   text-transform: uppercase;
@@ -95,49 +102,81 @@ header ul li {
   font-size: small;
   font-weight: 700;
 }
-header ul li a {
+header .container ul li a {
   text-decoration: none;
   color: #ddd;
 }
-header ul li:hover {
+header .container ul li:hover {
   color: #3484e0;
   opacity: 0.6;
   background-color: #41464f;
   transform: scale(1.2);
 }
-header a {
+header .container a {
   text-decoration: none;
 }
 
-.intro {
+.home {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  padding: 60px 0 1;
   background-color: #41464f;
+  position: relative;
+  top: -100vh;
+  transform: translateY(100vh);
+  transition: 3s;
 }
-.intro span:not(:first-child) {
+.home span:not(:first-child) {
   text-transform: uppercase;
 }
-.intro span:first-child {
-  font-size: x-large;
+.home .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+.home .container .text span:first-child {
+  font-size: xx-large;
   font-weight: bold;
   color: #53606e;
 }
-.intro :where(:nth-child(2 of span), :nth-child(3 of span)) {
-  font-size: xx-large;
+.home .container .text :where(:nth-child(2 of span), :nth-child(3 of span)) {
+  font-size: xxx-large;
   font-weight: bold;
   color: #ddd;
   letter-spacing: 2px;
 }
-.intro :nth-child(4 of span) {
+.home .container .text :nth-child(4 of span) {
   width: 5px;
   height: 5px;
   background-color: #3484e0;
   display: inline-block;
 }
-.intro a {
+.home .container .text a {
   text-decoration: none;
   background-color: #3484e0;
   color: #ddd;
+}
+@media (max-width: 771px) {
+  .home .container .computer {
+    display: none;
+  }
+}
+.home .container .computer {
+  width: 321px;
+  height: 167px;
+  overflow: hidden;
+  margin-right: 30px;
+  border-radius: 3px;
+  border: 2px solid #505763;
+}
+.home .container .computer img {
+  width: 100%;
+  height: 100%;
+  transition: 0.5;
+}
+.home .container .computer img:hover {
+  scale: 1.1;
+  opacity: 0.7;
 }/*# sourceMappingURL=style.css.map */
