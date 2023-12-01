@@ -13,7 +13,9 @@ header {
   .container {
     @include display(flex, space-between, center);
     margin: 0 auto;
-
+    i {
+      font-size: xx-large;
+    }
     .logo {
       @include reselLink;
       @include display(flex, center, center);
@@ -33,7 +35,7 @@ header {
       }
     }
     @media (min-width: 768px) {
-      i {
+      .content i {
         display: none;
       }
       ul {
@@ -133,7 +135,6 @@ header {
       width: 321px;
       height: 167px;
       overflow: hidden;
-      margin-right: 30px;
       border-radius: 3px;
       border: 2px solid $bg1;
       img {
