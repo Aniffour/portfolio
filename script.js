@@ -1,12 +1,14 @@
-const bar = document.querySelector('.bar-header')
 let linksOpen = false
 const links = document.querySelector('.links')
-bar.addEventListener('click', _=> {if (linksOpen){ 
-    links.style.display = 'none'
-    linksOpen = false
-}
-else{
-    links.style.display = 'flex'
-    linksOpen = true
-     }
+console.log(bar.id);
+document.addEventListener('click', (e)=>{
+
+    if(e.target.id == 'bar'){
+        linksOpen ? links.style.display ='none' :links.style.display = 'flex'
+        linksOpen = !linksOpen
+    }
+    else{
+        links.style.display = 'none'
+        linksOpen =false 
+    }
 })

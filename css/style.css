@@ -443,12 +443,12 @@ header .container a {
   border: 2px solid #3484e0;
   position: absolute;
 }
-@media (min-width: 768px) {
+@media (min-width: 500px) {
   .services > :nth-child(1 of a) {
     bottom: 70px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .services > :nth-child(1 of a) {
     display: none;
   }
@@ -511,6 +511,11 @@ footer > a {
   position: absolute;
   bottom: 50%;
   right: 2px;
+}
+@media (max-width: 767px) {
+  footer > a {
+    bottom: 10%;
+  }
 }
 footer > a i {
   color: #3484e0;

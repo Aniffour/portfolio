@@ -379,10 +379,10 @@ header {
     font-weight: bold;
     font-size: medium;
     border: 2px solid $blue;
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
       bottom: 70px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 500px) {
       display: none;
     }
     position: absolute;
@@ -434,6 +434,9 @@ footer {
     @include resetLink;
     position: absolute;
     bottom: 50%;
+    @media (max-width: 767px) {
+      bottom: 10%;
+    }
     right: 2px;
     i {
       color: $blue;
