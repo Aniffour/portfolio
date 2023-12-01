@@ -1,0 +1,16 @@
+@use "./variables" as *;
+
+@mixin display($display, $justifyContent, $alignItems) {
+  display: $display;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+@mixin resetList() {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@mixin reselLink() {
+  text-decoration: none;
+  color: $white;
+}

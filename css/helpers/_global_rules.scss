@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+// small
+@media (max-width: 768px) {
+  .container {
+    width: 100% !important;
+    padding: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px !important;
+  }
+}
+// Medium
+@media (min-width: 992px) {
+  .container {
+    width: 970px !important;
+  }
+}
+//  Large
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px !important;
+  }
+}

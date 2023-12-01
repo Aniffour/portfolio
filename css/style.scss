@@ -1,0 +1,109 @@
+@use "./helpers/_global_rules" as *;
+@use "./helpers/_variables" as *;
+@use "./helpers/_mixins" as *;
+
+// Header
+header .container {
+  @include display(flex, space-between, center);
+}
+header {
+  @include display(flex, center, center);
+  background-color: $bg1;
+  .logo {
+    @include display(flex, center, center);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      &:hover {
+        transition: $main-transition;
+        opacity: 0.7;
+        transform: scale(1.2) rotate(-10deg);
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    i {
+      display: none;
+    }
+    ul {
+      display: flex;
+    }
+  }
+  @media (max-width: 768px) {
+    ul {
+      display: none;
+      position: absolute;
+      background-color: $bg1;
+      top: 20px;
+      flex-direction: column;
+    }
+    i {
+      display: inline-block;
+    }
+    .content {
+      @include display(flex, center, center);
+      position: relative;
+    }
+  }
+  ul {
+    @include resetList;
+    justify-content: space-between;
+    align-items: center;
+    li {
+      a {
+        @include reselLink;
+      }
+      transition: $main-transition;
+      padding: 5px 10px;
+      text-transform: uppercase;
+      color: $white;
+      font-size: small;
+      font-weight: 700;
+      &:hover {
+        color: $blue;
+        opacity: 0.6;
+        background-color: $bg2;
+        transform: scale(1.2);
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.intro {
+  @include display(flex, center, center);
+  padding: 40px 0;
+  background-color: $bg2;
+  span:not(:first-child) {
+    text-transform: uppercase;
+  }
+  span:first-child {
+    font-size: x-large;
+    font-weight: bold;
+    color: #53606e;
+  }
+  :where(:nth-child(2 of span), :nth-child(3 of span)) {
+    font-size: xx-large;
+    font-weight: bold;
+    color: $white;
+    letter-spacing: 2px;
+  }
+  :nth-child(4 of span) {
+    width: 5px;
+    height: 5px;
+    background-color: $blue;
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+    background-color: $blue;
+    color: $white;
+  }
+}
