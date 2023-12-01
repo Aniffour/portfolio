@@ -1,4 +1,4 @@
-let linksOpen = false
+if (window.innerWidth < 771){let linksOpen = false
 const links = document.querySelector('.links')
 console.log(bar.id);
 document.addEventListener('click', (e)=>{
@@ -11,4 +11,4 @@ document.addEventListener('click', (e)=>{
         links.style.display = 'none'
         linksOpen =false 
     }
-})
+})}
