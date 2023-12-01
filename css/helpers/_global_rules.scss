@@ -1,3 +1,8 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+:root {
+  scroll-behavior: smooth;
+}
 * {
   box-sizing: border-box;
 }
@@ -25,4 +30,19 @@
   .container {
     width: 1170px !important;
   }
+}
+
+%title {
+  color: $blue;
+  font-size: xxx-large;
+  font-weight: bold;
+  text-shadow: 6px 4px 5px #000000;
+}
+%arrow-down {
+  @include resetLink;
+  color: $blue;
+  position: absolute;
+  bottom: 0;
+  font-size: xxx-large;
+  text-shadow: 6px 4px 5px #000000;
 }

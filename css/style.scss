@@ -2,7 +2,6 @@
 @use "./helpers/_variables" as *;
 @use "./helpers/_mixins" as *;
 // Start Header
-
 header {
   @include display(flex, center, center);
   background-color: $bg1;
@@ -10,14 +9,16 @@ header {
   top: 0;
   z-index: 100;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 35px 34px 7px;
   .container {
     @include display(flex, space-between, center);
     margin: 0 auto;
+    z-index: 101;
     i {
       font-size: xx-large;
     }
     .logo {
-      @include reselLink;
+      @include resetList;
       @include display(flex, center, center);
       width: 40px;
       height: 40px;
@@ -47,8 +48,9 @@ header {
         display: none;
         position: absolute;
         background-color: $bg1;
-        top: 20px;
+        top: 40px;
         flex-direction: column;
+        width: 200px;
       }
       i {
         display: inline-block;
@@ -65,7 +67,7 @@ header {
       z-index: 100000;
       li {
         a {
-          @include reselLink;
+          @include resetLink;
         }
         transition: $main-transition;
         padding: 5px 10px;
@@ -82,7 +84,7 @@ header {
       }
     }
     a {
-      text-decoration: none;
+      @include resetLink;
     }
   }
 }
@@ -90,15 +92,12 @@ header {
 // start intro
 .home {
   @include display(flex, center, center);
-  padding: 60px 0 1;
   background-color: $bg2;
-  position: relative;
-  top: -100vh;
-  transform: translateY(100vh);
-  transition: $main-transition-2;
   span:not(:first-child) {
     text-transform: uppercase;
   }
+  @include effectPage(0);
+  z-index: 1;
   .container {
     @include display(flex, space-between, center);
     height: 100vh;
@@ -148,5 +147,293 @@ header {
       }
     }
   }
+  .arrow-down {
+    @extend %arrow-down;
+  }
 }
 // end intro
+// start about
+.about {
+  @include display(flex, center, center);
+  height: 100vh;
+  background-color: $bg1;
+  position: relative;
+  @include effectPage(1);
+  .container {
+    height: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+    & > h1 {
+      @extend %title;
+    }
+    .content {
+      margin-top: 100px;
+      @include display(flex, space-between, center);
+
+      div:first-child {
+        position: relative;
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          border: 2px solid $blue;
+          transform: translate(20px, 20px);
+          z-index: -1;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      @media (max-width: 991px) {
+        div:first-of-type {
+          display: none;
+        }
+        & {
+          justify-content: center;
+        }
+        .text {
+          width: 100% !important;
+        }
+      }
+      .text {
+        @include display(flex, center, center);
+        flex-direction: column;
+        width: 50%;
+        p {
+          width: 60%;
+          color: $white;
+        }
+        .info {
+          margin-top: 40px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          @media (max-width: 991px) {
+            flex-direction: column;
+            span {
+              width: 100%;
+            }
+          }
+          gap: 7px;
+          span {
+            @media (min-width: 991px) {
+              width: calc(90% / 2);
+            }
+            background-color: $bg2;
+            color: $white;
+            font-weight: bold;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+              rgba(0, 0, 0, 0.12) 0px -12px 30px,
+              rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          }
+        }
+      }
+    }
+  }
+  .arrow-down {
+    @extend %arrow-down;
+  }
+}
+// end about
+// start skills
+.skills {
+  @include display(flex, center, start);
+  background-color: $bg2;
+  min-height: 100vh;
+  position: relative;
+  @include effectPage(2);
+  .container {
+    @include display(flex, center, center);
+    flex-direction: column;
+    h1 {
+      @extend %title;
+    }
+    h1,
+    p,
+    .content span {
+      text-transform: capitalize;
+    }
+    h2 {
+      font-size: x-large;
+      font-weight: bold;
+      color: $white;
+    }
+    p {
+      text-align: center;
+      color: $white;
+      opacity: 0.6;
+    }
+    .content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      width: 100%;
+      gap: 3px;
+      div {
+        overflow: hidden;
+        &:hover {
+          opacity: 0.7;
+          scale: 0.8;
+        }
+        @include display(flex, center, center);
+        flex-direction: column;
+        background-color: $bg1;
+        padding: 10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 5px;
+        }
+        span {
+          color: $white;
+          font-weight: bold;
+          font-size: medium;
+        }
+      }
+    }
+  }
+  .arrow-down {
+    @extend %arrow-down;
+  }
+}
+// end skills
+// start services
+.services {
+  position: relative;
+  @include display(flex, center, start);
+  @include effectPage(3);
+  min-height: 100vh;
+  background-color: $bg1;
+  .container {
+    @include display(flex, center, space-between);
+    flex-wrap: wrap;
+    h1 {
+      @extend %title;
+    }
+    .content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      @media (max-width: 771px) {
+        flex-direction: column;
+        div {
+          width: 100% !important;
+        }
+      }
+      div {
+        @media (min-width: 991px) {
+          &:hover {
+            transition: $main-transition;
+            transform: scale(1.1);
+          }
+        }
+        padding: 10px;
+        border-radius: 5px;
+        background-color: $bg2;
+        color: $white;
+        width: 40%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+        h3 {
+          // width: 100%;
+          i {
+            color: $blue;
+            font-size: larger;
+            margin-right: 5px;
+          }
+          margin: 0;
+          font-size: large;
+          font-weight: bold;
+          text-align: center;
+        }
+        p {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  & > :nth-child(1 of a) {
+    @include resetLink;
+    background-color: $bg1;
+    padding: 20px;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: medium;
+    border: 2px solid $blue;
+    @media (min-width: 768px) {
+      bottom: 70px;
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+    position: absolute;
+    @media (min-width: 991px) {
+      &:hover {
+        transform: $main-transition;
+        transform: translateY(-10px);
+      }
+    }
+  }
+}
+// end services
+// start contact/footer
+footer {
+  @include display(flex, center, center);
+  background-color: $bg2;
+  width: 100%;
+  @include effectPage(4);
+  text-align: center;
+  position: relative;
+  .container {
+    @include display(flex, center, center);
+    flex-wrap: wrap;
+    flex-direction: column;
+    .contact {
+      @include display(flex, space-between, center);
+      h2 {
+        font-size: xx-large;
+        font-weight: bold;
+        color: $white;
+      }
+      div {
+        text-align: center;
+        a {
+          @include resetLink;
+          font-size: xx-large;
+          margin-left: 20px;
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+  p {
+    color: $white;
+  }
+  & > a {
+    @include resetLink;
+    position: absolute;
+    bottom: 50%;
+    right: 2px;
+    i {
+      color: $blue;
+      font-size: xxx-large;
+    }
+  }
+}
+// end contact/footer
